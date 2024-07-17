@@ -5,6 +5,21 @@
     <form method="POST" action="/posts/{{post.id}}/edit">
         <input type="text" name="title" placeholder="Title"/><br>
         <input type="text" name="content" placeholder="Content here" height="50px"/><br>
+        
+        {% for tag in tags %}
+        {{ tag.name }}
+        <input type="checkbox"
+               value="{{ tag.id }}"
+               id="tag_{{ tag.id }}"
+               {% if tag in post.tags %}checked{% endif %}
+               name="tags"
+               />
+        <br>
+
+       
+
+    {% endfor %}
+        
         <button>Edit</button>
     </form>
     <a href="/users"><button>cancel</button></a>

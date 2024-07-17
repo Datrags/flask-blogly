@@ -4,7 +4,16 @@
 <h1>Create a Post for {{user.first_name}} {{user.last_name}} </h1>
 <form method="POST" action="/users/{{user.id}}/posts/new">
     <input type="text" name="title" placeholder="Title"/><br>
-    <input type="textarea" name="content" placeholder="Content here"/>
+    <textarea name="content" placeholder="Content here"></textarea>
+    
+    {% for tag in tags %}
+    <b>{{tag.name}}</b>
+    <input type="checkbox"
+           value="{{ tag.id }}"
+           id="tag_{{ tag.id }}"
+           name="tags"
+        />
+        <br>
     <button>Add</button>
 </form>
 <a href="/users"><button>cancel</button></a>
